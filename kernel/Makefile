@@ -8,18 +8,18 @@
 
 # GNU的二进制文件处理程序，用于创建、修改以及从归档文件中抽取文件
 AR	=ar
-AS	=as 		# GNU的汇编程序
-LD	=ld 		# GNU的链接程序
+AS	=as --32 		# GNU的汇编程序
+LD	=ld  -m elf_i386 		# GNU的链接程序
 # 链接程序所有的参数，-s 输出文件中省略所有符号信息。-x 删除所有局部符号。
 LDFLAGS	=-s -x
 CC	=gcc -mcpu=i386  	# GNU C语言编译器
-# C 编译程序选项。-Wall 显示所有的警告信息：-0 优化选项，优化代码长度和执行时间；
+# C 编译程序选项。-m32 -Wall 显示所有的警告信息：-0 优化选项，优化代码长度和执行时间；
 # -fstrength-reduce 优化循环代码，排除重复变量；-fomit-frame-pointer省略保存不
 #  必要的框架指针；-fcombine-regs合并寄存器，减少寄存器类的使用；-finline-function
 #  将所有简单短小的函数代码嵌入调用程序中；-mstring-insns Linus自己添加的优化选项，
 #  以后不再使用；-nostdinc -L../include不使用默认路径中的包含文件，而使用这里指定
 #  目录中的。
-CFLAGS	=-Wall -O -fstrength-reduce -fomit-frame-pointer \
+CFLAGS	=-m32 -fno-stack-protector -Wall -O -fstrength-reduce -fomit-frame-pointer \
 	-finline-functions -nostdinc -I../include
 # C前处理选项。-E只运行C前处理，对所有指定的C程序进行预处理并将处理结果输出到标准
 # 输出设备或指定的输出文件中.

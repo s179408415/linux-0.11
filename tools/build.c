@@ -53,7 +53,8 @@ void usage(void)
 {
 	die("Usage: build bootsect setup system [rootdev] [> image]");
 }
-
+#define MAJOR(a) (((unsigned)(a))>>8)
+#define MINOR(a) ((a)&0xff)
 int main(int argc, char ** argv)
 {
 	int i,c,id;

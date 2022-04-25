@@ -14,8 +14,8 @@
 // 输入：eax = 0; ecx = 以字节为单位的数据块长度（BLOCK_SIZE/4）；edi ＝ 指定
 // 起始地址addr。
 #define clear_block(addr) \
-__asm__ __volatile__ ("cld\n\t" \       
-	"rep\n\t" \                         
+__asm__ __volatile__ ("cld\n\t" \
+	"rep\n\t" \
 	"stosl" \
 	::"a" (0),"c" (BLOCK_SIZE/4),"D" ((long) (addr)))
 
