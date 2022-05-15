@@ -39,7 +39,7 @@ LIBS	=lib/lib.a
 all:	Image
 
 Image: boot/bootsect boot/setup tools/system tools/build
-	objcopy -O binary -R .note -R .comment tools/system tools/kernel
+	objcopy -O binary -R .note* -R .comment tools/system tools/kernel
 	tools/build boot/bootsect boot/setup tools/kernel $(ROOT_DEV) > Image
 	rm tools/kernel -f
 	sync
