@@ -361,6 +361,7 @@ void unexpected_floppy_interrupt(void)
 
 static void recalibrate_floppy(void)
 {
+	current_drive=1;
 	recalibrate = 0;
 	current_track = 0;
 	do_floppy = recal_interrupt;
