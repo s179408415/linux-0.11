@@ -14,8 +14,8 @@
 // 输入：eax = 0; ecx = 以字节为单位的数据块长度（BLOCK_SIZE/4）；edi ＝ 指定
 // 起始地址addr。
 #define clear_block(addr) \
-__asm__ __volatile__ ("cld\n\t" \       // 清方向位
-	"rep\n\t" \                         // 重复执行存储数据(0).
+__asm__ __volatile__ ("cld\n\t" \       
+	"rep\n\t" \                         
 	"stosl" \
 	::"a" (0),"c" (BLOCK_SIZE/4),"D" ((long) (addr)))
 
@@ -50,17 +50,17 @@ res;})
 // 值返回。addr是缓冲块数据区的地址，扫描寻找的范围是1024字节（8192bit位）。
 #define find_first_zero(addr) ({ \
 int __res; \
-__asm__ __volatile__ ("cld\n" \         // 清方向位
-	"1:\tlodsl\n\t" \                   // 取[esi]→eax.
-	"notl %%eax\n\t" \                  // eax中每位取反。
-	"bsfl %%eax,%%edx\n\t" \            // 从位0扫描eax中是1的第1个位，其偏移值→edx
-	"je 2f\n\t" \                       // 如果eax中全是0，则向前跳转到标号2处。
-	"addl %%edx,%%ecx\n\t" \            // 偏移值加入ecx(ecx是位图首个0值位的偏移值)
-	"jmp 3f\n" \                        // 向前跳转到标号3处
-	"2:\taddl $32,%%ecx\n\t" \          // 未找到0值位，则将ecx加1个字长的位偏移量32
-	"cmpl $8192,%%ecx\n\t" \            // 已经扫描了8192bit位(1024字节)
-	"jl 1b\n" \                         // 若还没有扫描完1块数据，则向前跳转到标号1处
-	"3:" \                              // 结束。此时ecx中是位偏移量。
+__asm__ __volatile__ ("cld\n" \         
+	"1:\tlodsl\n\t" \                   
+	"notl %%eax\n\t" \                  
+	"bsfl %%eax,%%edx\n\t" \            
+	"je 2f\n\t" \                       
+	"addl %%edx,%%ecx\n\t" \            
+	"jmp 3f\n" \                        
+	"2:\taddl $32,%%ecx\n\t" \          
+	"cmpl $8192,%%ecx\n\t" \            
+	"jl 1b\n" \                         
+	"3:" \                              
 	:"=c" (__res):"c" (0),"S" (addr)); \
 __res;})
 
