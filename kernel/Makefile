@@ -12,7 +12,7 @@ AS	=as --32 		# GNU的汇编程序
 LD	=ld  -m elf_i386 		# GNU的链接程序
 # 链接程序所有的参数，-s 输出文件中省略所有符号信息。-x 删除所有局部符号。
 LDFLAGS	=-s -x
-CC	=gcc -mcpu=i386  	# GNU C语言编译器
+CC	=gcc -mcpu=i386  -g 	# GNU C语言编译器
 # C 编译程序选项。-m32 -Wall 显示所有的警告信息：-0 优化选项，优化代码长度和执行时间；
 # -fstrength-reduce 优化循环代码，排除重复变量；-fomit-frame-pointer省略保存不
 #  必要的框架指针；-fcombine-regs合并寄存器，减少寄存器类的使用；-finline-function

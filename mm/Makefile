@@ -1,4 +1,4 @@
-CC	=gcc -mcpu=i386
+CC	=gcc -mcpu=i386 -g
 CFLAGS	=-m32 -fno-stack-protector -Wall -O -fstrength-reduce -fomit-frame-pointer \
 	-finline-functions -nostdinc -I../include
 AS	=as --32

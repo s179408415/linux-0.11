@@ -1,6 +1,6 @@
 AR	=ar
 AS	=as --32
-CC	=gcc -mcpu=i386
+CC	=gcc -mcpu=i386 -g
 LD	=ld  -m elf_i386
 CFLAGS	=-m32 -fno-stack-protector -Wall -fstrength-reduce -fomit-frame-pointer \
 	 -nostdinc -I../include
