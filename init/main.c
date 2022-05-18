@@ -147,7 +147,7 @@ struct drive_info {
 } drive_info;  // 用于存放硬盘参数表信息
 
 // 内核初始化主程序。初始化结束后将以任务0（idle任务即空闲任务）的身份运行。
-void main(void) /* This really IS void, no error here. */
+void _main(void) /* This really IS void, no error here. */
 {		/* The startup routine assumes (well, ...) this */
 		/*
 		 * Interrupts are still disabled. Do necessary setups, then
