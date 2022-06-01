@@ -356,7 +356,8 @@ static inline void *memmove(void *dest, const void *src, int n) {
     __asm__(
 	"std\n\t"
 	"rep\n\t"
-	"movsb" ::"c"(n),
+	"movsb\n\t"
+  "cld" ::"c"(n),
 	"S"(src + n - 1), "D"(dest + n - 1));
   return dest;
 }
